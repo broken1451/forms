@@ -1,0 +1,52 @@
+<h2>Template <small>Dinamicos</small></h2>
+
+<form (ngSubmit)='guardar()' autocomplete="off" #form="ngForm">
+    <!-- nombre -->
+    <div class="row mb-3">
+        <label for="" class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+            <input  required [ngModel]='person.nombre' type="text" class="form-control" placeholder="Nombre..." name="nombre" id="">
+            <span *ngIf="form.controls.nombre?.errors && form.controls.nombre?.touched"
+            class="form-text text-danger"> Este campo es obligatorio</span>
+        </div>
+    </div>
+
+    <!-- agregar favorito -->
+    <div class="row mb-3">
+        <label for="" class="col-sm-3 col-form-label">Agregar</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <input (keyup.enter)='guardarJuego()' [(ngModel)]="nuevoJuego" name='nuevoJuego' class="form-control" placeholder="Agregar favorito...">
+                <button type="button" class="btn btn-outline-primary" (click)='guardarJuego()'>Agregar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- lista favoritos -->
+    <div class="row mb-3">
+        <label for="" class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-9">
+            <div class="input-group mb-1" *ngFor="let juego of person.favoritos; let i=index">
+                <input  [(ngModel)]="juego.nombre"
+                name="{{i}}" class="form-control" required>
+                <button type="button" class="btn btn-outline-danger" (click)='borrar(i)'>Borrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button [disabled]='form.invalid' type="button" class="btn btn-primary btn-block w-100 float-end" (click)='guardar()' >
+                Guardar
+            </button>
+
+        </div>
+    </div>
+</form>
+
+
+
+<span>Persona</span>
+<pre>
+    {{person | json}}
+</pre>

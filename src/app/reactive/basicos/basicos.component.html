@@ -1,0 +1,91 @@
+<h2>Reactivos basicos</h2>
+<hr />
+<div class="row">
+  <div class="col">
+    <form  autocomplete="off" [formGroup]="form" (ngSubmit)='guardar()'>
+      <!-- campo producto -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Producto</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre producto"
+            name="producto"
+            formControlName='nombre'
+          />
+          <span *ngIf="campoNoEsValido('nombre')"  class="form-text text-danger"> Debe de ser 3 letras</span>
+        </div>
+      </div>
+      <!-- campo precio -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Precio</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Precio producto"
+            name="precio"
+            formControlName='precio'
+          />
+          <span *ngIf="campoNoEsValido('precio')" class="form-text text-danger">
+            El precio debe ser 0 o mayor</span
+          >
+        </div>
+      </div>
+      <div class="row"></div>
+      <!-- campo existencias -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Existencia</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Existencias del producto"
+            name="existencia"
+            formControlName= 'existencia'
+          />
+          <span *ngIf="campoNoEsValido('existencia')" class="form-text text-danger">
+            Las existencia debe ser 0 o mayor</span
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button
+            type="submit"
+            class="btn btn-primary btn-block float-end w-100"
+           
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>
+      {{ form.valid }}
+    </pre>
+    <span>Prinsting</span>
+    <pre>
+      {{ form.pristine }}
+    </pre>
+    <span>Touched</span>
+    <pre>
+      {{ form.touched }}
+    </pre>
+    <span>Value</span>
+    <pre>
+      {{ form.value | json }}
+    </pre>
+    <span>Precio</span>
+    <pre>
+      <!-- {{ form.controls.precio.errors | json }} -->
+    </pre>
+  </div>
+</div>

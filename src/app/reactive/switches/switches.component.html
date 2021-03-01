@@ -1,0 +1,87 @@
+<h2>Reactivos: switches</h2>
+<hr />
+<form [formGroup]="form">
+  <!-- radios -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label" for="">Genero</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="radioM"
+          value='M'
+          formControlName='genero'
+        />
+        <label class="form-check-label" for="radioM"> Masculino </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="radioF"
+          value='F'
+          formControlName='genero'
+        />
+        <label class="form-check-label" for="radioF"> Femenino </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Switches -->
+  <div class="row mb-3 ">
+    <label class="col-sm-3 col-form-label" for="">Notificaciones</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch mt-2">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckChecked"
+          formControlName='notificaciones'
+        />
+        <label class="form-check-label" for="flexSwitchCheckChecked"
+          >Quiero recibir notificaciones</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Checks -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label" for=""></label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="flexCheckDefault"   formControlName='terminos' />
+        <label class="form-check-label" for="flexCheckDefault">
+          Terminos y condiciones
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary float-end btn-block w-100">Guardar</button>
+    </div>
+  </div>
+</form>
+
+<h4>Form value</h4>
+<pre>
+    {{form.value | json}}
+</pre>
+<br>
+<h4>Form persona</h4>
+<pre>
+    {{person | json}}
+</pre>
+<br>
+<h4>Valid</h4>
+<pre>{{form.valid}}</pre>
+<br>
+<!-- <h4>Condiciones</h4>
+<pre>{{form.valid}}</pre> -->
+<br>
+<!-- <h4>Terminos</h4>
+<pre>{{form.controls?.terminos?.errors | json }}</pre> -->
+<br>
