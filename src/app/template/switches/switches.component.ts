@@ -20,4 +20,3 @@ export class SwitchesComponent implements OnInit {
 
 
 }
-l

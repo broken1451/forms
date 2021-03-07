@@ -1,0 +1,138 @@
+<h2>Validaciones Reactivas</h2>
+<hr />
+<div class="row">
+  <div class="col">
+    <form autocomplete="off" [formGroup]="form" (ngSubmit)="guardar()">
+      <!-- nombre -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre"
+            formControlName="nombre"
+          />
+          <span *ngIf="campoNoEsValido('nombre')" class="form-text text-danger"
+            >Debe de ser en formato de nombre y apellido</span
+          >
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            formControlName="email"
+          />
+          <span *ngIf="campoNoEsValido('email')" class="form-text text-danger">
+            {{ emailErrMsg }}
+          </span>
+          <!-- <span *ngIf="emailformat()" class="form-text text-danger">
+              El correo no esta de forma correcta
+            </span>
+          <span *ngIf="emailTomado()" class="form-text text-danger">
+              El correo ya fue tomado
+            </span> -->
+        </div>
+      </div>
+
+      <!-- Username -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Username</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            formControlName="username"
+          />
+          <span
+            *ngIf="campoNoEsValido('username')"
+            class="form-text text-danger"
+          >
+            El username no puede ser broken
+          </span>
+        </div>
+      </div>
+
+      <!-- Pass -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <span
+            *ngIf="campoNoEsValido('password')"
+            class="form-text text-danger"
+          >
+            El pass debe de ser mayor de 6
+          </span>
+        </div>
+      </div>
+      <!-- Pass 2 -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Confirm Password</label>
+        <div class="col-sm-9">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Confirm Password"
+            formControlName="password2"
+          />
+          <span
+            *ngIf="campoNoEsValido('password2')"
+            class="form-text text-danger"
+          >
+            El pass deben de ser iguales y minimo de 6
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button
+            [disabled]="form.pending"
+            type="submit"
+            class="btn btn-primary float-end btn-block w-100"
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<h2>Form status: {{ form.status }}</h2>
+<hr />
+
+<h2>Form valid: {{ form.valid }}</h2>
+<hr />
+
+<h2>Form errors: {{ form.errors | json }}</h2>
+<hr />
+
+<h2>Form pending: {{ form.pending | json }}</h2>
+<hr />
+
+<h5>Nombre:</h5>
+<pre> {{ form.controls.nombre.errors | json }}</pre>
+<hr />
+<h5>Email:</h5>
+<pre> {{ form.controls.email.errors | json }}</pre>
+<hr />
+<h5>Username:</h5>
+<pre> {{ form.controls.username.errors | json }}</pre>
+<hr />
+<h5>Password:</h5>
+<pre> {{ form.controls.password.errors | json }}</pre>
+<hr />
+<h5>Confirmr pass:</h5>
+<pre> {{ form.controls.password2.errors | json }}</pre>

@@ -1,6 +1,6 @@
 <h2>Reactivos: switches</h2>
 <hr />
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)='guardar()'>
   <!-- radios -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label" for="">Genero</label>
@@ -61,7 +61,7 @@
 
   <div class="row">
     <div class="col">
-      <button class="btn btn-primary float-end btn-block w-100">Guardar</button>
+      <button type="submit" class="btn btn-primary float-end btn-block w-100">Guardar</button>
     </div>
   </div>
 </form>
